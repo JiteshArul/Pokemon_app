@@ -8,7 +8,7 @@ abstract class PokemonEvent extends Equatable {
 }
 
 class FetchPokemon extends PokemonEvent {
-  final pokemon;
+  final String pokemon;
   FetchPokemon(this.pokemon);
   List<Object> get props => [pokemon];
 }

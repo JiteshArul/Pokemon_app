@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon_app/presentation/bloc/pokemon_bloc.dart';
 import 'package:pokemon_app/presentation/pages/main_screen.dart';
 
 void main() {
@@ -18,6 +20,9 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.grey[300],
           primarySwatch: Colors.blue,
         ),
-        home: MainScreen());
+        home: BlocProvider(
+          create: (context) => PokemonBloc(),
+          child: MainScreen(),
+        ));
   }
 }

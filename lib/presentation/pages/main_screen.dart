@@ -1,32 +1,38 @@
-import 'dart:math';
+import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:pokemon_app/presentation/widgets/empty_card.dart';
+import 'package:pokemon_app/presentation/widgets/image_card.dart';
+import 'package:pokemon_app/presentation/widgets/name_tag.dart';
+import 'package:pokemon_app/presentation/widgets/search_bar.dart';
+import 'package:pokemon_app/presentation/widgets/stats_display.dart';
 import '../bloc/pokemon_bloc.dart';
-import 'package:pokemon_app/data/repositories/pokemon_repository.dart';
-import 'package:pokemon_app/domain/models/pokemon_model.dart';
-import 'package:bloc/bloc.dart';
-
-List<String> iterator(int a) {
-  List<String> x = [];
-  for (int i = 0; i < a; i++) {
-    x.add((Random().nextInt(1000) + 1).toString());
-  }
-  return x;
-}
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<PokemonBloc>(context).fetchPokemon('4');
-    return Scaffold(body: Center(child:
-        BlocBuilder<PokemonBloc, PokemonState>(builder: (context, state) {
-      print(state);
-      if (!(state is ShowPokemonImage)) return CircularProgressIndicator();
-      final work = (state as ShowPokemonImage).pokemon_image;
-      print(work);
-      return GridView.count(
-          crossAxisCount: 5, children: [SvgPicture.network(work)]);
-    })));
+    return Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Center(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                    Container(
+                      color: Theme.of(context).primaryColor,
+                      padding: const EdgeInsets.all(20),
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      width: double.infinity,
+                    ),
+                    ImageCard(),
+                    NameTag(),
+                    StatsDisplay(),
+                  ])),
+            ),
+            SearchBar(),
+          ],
+        ));
   }
 }

@@ -13,9 +13,24 @@ class PokemonRepo {
     return parsedJson(result.body);
   }
 
+  static Future<PokemonNameModel> getPokemonList() async {
+    final result =
+        await http.get(Uri.parse("https://pokeapi.co/api/v2/pokemon/"));
+    if (result.statusCode != 200) {
+      throw Exception();
+    }
+    return parseJson(result.body);
+  }
+
   static PokemonModel parsedJson(final response) {
     final _jsonDecoded = json.decode(response);
-    final _jsonPokemon = _jsonDecoded["sprites"];
+    final _jsonPokemon = _jsonDecoded;
     return PokemonModel.fromJson(_jsonPokemon);
   }
+}
+
+PokemonNameModel parseJson(final response) {
+  final _jsonDecoded = json.decode(response);
+  final _jsonPokemon = _jsonDecoded;
+  return PokemonNameModel.fromJson(_jsonPokemon);
 }

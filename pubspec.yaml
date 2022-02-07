@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  batch_flutter: ^1.1.1
   bloc: ^8.0.2
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
@@ -34,8 +35,11 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.0.1
   flutter_svg: ^1.0.3
+  flutter_typeahead: ^3.2.4
   html: ^0.15.0
   http: ^0.13.4
+  loading_animation_widget: ^1.1.0+0
+  material_floating_search_bar: ^0.3.6
 
 dev_dependencies:
   flutter_lints: ^1.0.0
@@ -64,10 +68,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Bungee
+      fonts:
+        - asset: lib/fonts/Bungee-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

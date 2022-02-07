@@ -11,7 +11,22 @@ class PokemonInitial extends PokemonState {}
 
 class ShowPokemonImage extends PokemonState {
   @override
-  List<Object> get props => [pokemon_image];
-  final String pokemon_image;
-  ShowPokemonImage({required this.pokemon_image});
+  List<Object> get props => [pokemonImage, baseExperience];
+  final String pokemonImage;
+  final int baseExperience;
+  final String pokemonName;
+  final String pokemonIcon;
+  ShowPokemonImage(
+      {required this.pokemonImage,
+      required this.baseExperience,
+      required this.pokemonName,
+      required this.pokemonIcon});
+}
+
+class PokemonData extends PokemonState {
+  @override
+  List<Object> get props => [name, url];
+  final List<String> name;
+  final List<String> url;
+  PokemonData({required this.name, required this.url});
 }

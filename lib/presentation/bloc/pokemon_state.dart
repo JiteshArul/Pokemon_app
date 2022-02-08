@@ -23,10 +23,22 @@ class ShowPokemonImage extends PokemonState {
       required this.pokemonIcon});
 }
 
-class PokemonData extends PokemonState {
+abstract class PokemonSearchState extends Equatable {
+  const PokemonSearchState();
+
+  @override
+  List<Object> get props => [];
+}
+
+class PokemonSearchInitial extends PokemonSearchState {}
+
+class PokemonSearchData extends PokemonSearchState {
   @override
   List<Object> get props => [name, url];
   final List<String> name;
   final List<String> url;
-  PokemonData({required this.name, required this.url});
+  PokemonSearchData({
+    required this.name,
+    required this.url,
+  });
 }

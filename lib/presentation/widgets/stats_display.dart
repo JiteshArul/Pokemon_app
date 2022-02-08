@@ -9,7 +9,7 @@ class StatsDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height * 0.30,
+        height: MediaQuery.of(context).size.height,
         width: double.infinity,
         padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.05,

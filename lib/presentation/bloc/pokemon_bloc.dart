@@ -6,6 +6,7 @@ part 'pokemon_state.dart';
 
 class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
   PokemonBloc() : super(PokemonInitial());
+
   void fetchPokemon(String a) {
     PokemonRepo.getPokemon(a).then((pokemon) => emit(ShowPokemonImage(
         pokemonName: pokemon.pokemonName,
@@ -13,9 +14,16 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
         baseExperience: pokemon.baseExperience,
         pokemonIcon: pokemon.pokemonIcon)));
   }
+}
 
-  void fetchPokemonNames() {
-    PokemonRepo.getPokemonList().then(
-        (pokemon) => emit(PokemonData(name: pokemon.name, url: pokemon.url)));
+class PokemonSearchBloc extends Bloc<PokemonSearchEvent, PokemonSearchState> {
+  PokemonSearchBloc() : super(PokemonSearchInitial());
+  void fetchPokemonNames(String a) {
+    PokemonRepo.getPokemonList().then((pokemon) {
+      var regex = new RegExp(a, caseSensitive: false);
+      var contactsAll = pokemon.name;
+      var searchlist = contactsAll.where((i) => regex.hasMatch(i)).toList();
+      emit(PokemonSearchData(name: searchlist, url: pokemon.url));
+    });
   }
 }

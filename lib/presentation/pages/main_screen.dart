@@ -1,7 +1,6 @@
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
-import 'package:pokemon_app/presentation/widgets/empty_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_app/presentation/widgets/image_card.dart';
 import 'package:pokemon_app/presentation/widgets/name_tag.dart';
 import 'package:pokemon_app/presentation/widgets/search_bar.dart';
@@ -31,7 +30,10 @@ class MainScreen extends StatelessWidget {
                     StatsDisplay(),
                   ])),
             ),
-            SearchBar(),
+            BlocProvider(
+              create: (context) => PokemonSearchBloc(),
+              child: SearchBar(),
+            )
           ],
         ));
   }

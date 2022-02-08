@@ -12,3 +12,16 @@ class FetchPokemon extends PokemonEvent {
   FetchPokemon(this.pokemon);
   List<Object> get props => [pokemon];
 }
+
+abstract class PokemonSearchEvent extends Equatable {
+  const PokemonSearchEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class SearchPokemon extends PokemonEvent {
+  final String pokemon;
+  SearchPokemon(this.pokemon);
+  List<Object> get props => [pokemon];
+}

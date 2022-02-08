@@ -26,23 +26,12 @@ class PokemonNameModel {
   List<String> url;
   PokemonNameModel({required this.name, required this.url});
   factory PokemonNameModel.fromJson(Map<String, dynamic> json) {
-    print(PokemonNameModel(
-        name: List<String>.from(json['results'].map((e) {
-          List<String> a = [];
-          a.add(e['name']);
-        })),
-        url: List<String>.from(json['results'].map((e) {
-          List<String> a = [];
-          a.add(e['url']);
-        }))));
     return PokemonNameModel(
         name: List<String>.from(json['results'].map((e) {
-          List<String> a = [];
-          a.add(e['name']);
+          return e['name'];
         })),
         url: List<String>.from(json['results'].map((e) {
-          List<String> a = [];
-          a.add(e['url']);
+          return e['url'];
         })));
   }
 }

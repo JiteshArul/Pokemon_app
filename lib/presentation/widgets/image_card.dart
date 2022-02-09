@@ -19,22 +19,25 @@ class ImageCard extends StatelessWidget {
           var pokemon = (state as ShowPokemonImage);
           print(state);
           return SizedBox(
-              child: Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-            elevation: 2,
-            child: Container(
-                padding:
-                    EdgeInsets.all(MediaQuery.of(context).size.height * 0.075),
-                width: MediaQuery.of(context).size.width * 0.95,
-                height: MediaQuery.of(context).size.height * 0.5,
-                child: pokemon.pokemonImage.lastIndexOf(r'.svg') != -1
-                    ? SvgPicture.network(pokemon.pokemonImage)
-                    : Image.network(
-                        pokemon.pokemonImage,
-                        scale: 2.5,
-                      )),
-          ));
+            child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25)),
+                elevation: 2,
+                child: Container(
+                  padding: EdgeInsets.all(
+                      MediaQuery.of(context).size.height * 0.075),
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  child: pokemon.pokemonImage.lastIndexOf(r'.svg') != -1
+                      ? SvgPicture.network(
+                          pokemon.pokemonImage,
+                          allowDrawingOutsideViewBox: true,
+                        )
+                      : Image.network(
+                          pokemon.pokemonImage,
+                        ),
+                )),
+          );
         }));
   }
 }

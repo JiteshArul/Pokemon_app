@@ -11,16 +11,18 @@ class PokemonInitial extends PokemonState {}
 
 class ShowPokemonImage extends PokemonState {
   @override
-  List<Object> get props => [pokemonImage, baseExperience];
+  List<Object> get props => [pokemonImage];
   final String pokemonImage;
-  final int baseExperience;
   final String pokemonName;
   final String pokemonIcon;
+  final List<String> pokemonStatsName;
+  final List<int> pokemonStatsValue;
   ShowPokemonImage(
       {required this.pokemonImage,
-      required this.baseExperience,
       required this.pokemonName,
-      required this.pokemonIcon});
+      required this.pokemonIcon,
+      required this.pokemonStatsName,
+      required this.pokemonStatsValue});
 }
 
 abstract class PokemonSearchState extends Equatable {

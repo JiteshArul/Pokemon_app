@@ -14,8 +14,8 @@ class PokemonRepo {
   }
 
   static Future<PokemonNameModel> getPokemonList() async {
-    final result = await http.get(
-        Uri.parse("https://pokeapi.co/api/v2/pokemon/?limit=500&offset=500"));
+    final result = await http
+        .get(Uri.parse("https://pokeapi.co/api/v2/pokemon/?limit=1118"));
     if (result.statusCode != 200) {
       throw Exception();
     }

@@ -8,11 +8,23 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
   PokemonBloc() : super(PokemonInitial());
 
   void fetchPokemon(String a) {
-    PokemonRepo.getPokemon(a).then((pokemon) => emit(ShowPokemonImage(
-        pokemonName: pokemon.pokemonName,
-        pokemonImage: pokemon.pokemonImage,
-        baseExperience: pokemon.baseExperience,
-        pokemonIcon: pokemon.pokemonIcon)));
+    PokemonRepo.getPokemon(a).then((pokemon) {
+      var pokemonStatsName = pokemon.otherStatNames;
+      pokemonStatsName.insert(0, "weight");
+      pokemonStatsName.insert(0, "height");
+      pokemonStatsName.insert(0, "base-experience");
+      var pokemonStatsValue = pokemon.otherStatValues;
+      pokemonStatsValue.insert(0, pokemon.weight);
+      pokemonStatsValue.insert(0, pokemon.height);
+      pokemonStatsValue.insert(0, pokemon.baseExperience);
+      print(pokemonStatsValue);
+      emit(ShowPokemonImage(
+          pokemonName: pokemon.pokemonName,
+          pokemonImage: pokemon.pokemonImage,
+          pokemonIcon: pokemon.pokemonIcon,
+          pokemonStatsName: pokemonStatsName,
+          pokemonStatsValue: pokemonStatsValue));
+    });
   }
 }
 

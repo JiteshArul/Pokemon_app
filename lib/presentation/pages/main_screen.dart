@@ -8,6 +8,7 @@ import 'package:pokemon_app/presentation/widgets/stats_display.dart';
 import '../bloc/pokemon_bloc.dart';
 
 class MainScreen extends StatelessWidget {
+  ScrollController control = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +16,7 @@ class MainScreen extends StatelessWidget {
         body: Stack(
           children: [
             SingleChildScrollView(
+              controller: control,
               child: Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,

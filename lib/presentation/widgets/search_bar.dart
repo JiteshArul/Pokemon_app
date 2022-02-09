@@ -73,7 +73,7 @@ class SearchBar extends StatelessWidget {
                                     _newTextFieldController.close();
                                   },
                                   child: Container(
-                                      width: double.infinity,
+                                      alignment: Alignment.center,
                                       height: 35,
                                       child: Text(e.toTitleCase(),
                                           style:

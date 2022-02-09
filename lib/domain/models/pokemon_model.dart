@@ -1,23 +1,43 @@
 class PokemonModel {
   String pokemonName;
   String pokemonImage;
-  int baseExperience;
   String pokemonIcon;
+  int baseExperience;
+  int height;
+  int weight;
+  List<String> otherStatNames;
+  List<int> otherStatValues;
   PokemonModel(
       {required this.pokemonImage,
-      required this.baseExperience,
       required this.pokemonName,
-      required this.pokemonIcon});
+      required this.pokemonIcon,
+      required this.baseExperience,
+      required this.height,
+      required this.weight,
+      required this.otherStatNames,
+      required this.otherStatValues});
 
   factory PokemonModel.fromJson(Map<String, dynamic> json) {
     return PokemonModel(
         pokemonName: json['name'],
-        pokemonImage:
-            json["sprites"]["other"]["dream_world"]["front_default"] != null
-                ? json["sprites"]["other"]["dream_world"]["front_default"]
-                : json["sprites"]["other"]["official-artwork"]["front_default"],
-        baseExperience: json["base_experience"],
-        pokemonIcon: json['sprites']['front_default']);
+        pokemonImage: json["sprites"]["other"]["dream_world"]
+                    ["front_default"] !=
+                null
+            ? json["sprites"]["other"]["dream_world"]["front_default"]
+            : json["sprites"]["other"]["official-artwork"]["front_default"] !=
+                    null
+                ? json["sprites"]["other"]["official-artwork"]["front_default"]
+                : json["sprites"]["other"]["home"]["front_default"],
+        pokemonIcon: json['sprites']['front_default'],
+        baseExperience: json['base_experience'],
+        height: json['height'],
+        weight: json['weight'],
+        otherStatNames: List<String>.from(json['stats'].map((e) {
+          return e['stat']['name'];
+        })),
+        otherStatValues: List<int>.from(json['stats'].map((e) {
+          return e['base_stat'];
+        })));
   }
 }
 

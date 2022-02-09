@@ -27,12 +27,14 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  auto_size_text: ^3.0.0
   batch_flutter: ^1.1.1
   bloc: ^8.0.2
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_animation_progress_bar: ^2.0.1
   flutter_bloc: ^8.0.1
   flutter_svg: ^1.0.3
   flutter_typeahead: ^3.2.4
@@ -40,6 +42,7 @@ dependencies:
   http: ^0.13.4
   loading_animation_widget: ^1.1.0+0
   material_floating_search_bar: ^0.3.6
+  percent_indicator: ^4.0.0
 
 dev_dependencies:
   flutter_lints: ^1.0.0
@@ -72,6 +75,9 @@ flutter:
     - family: Bungee
       fonts:
         - asset: lib/fonts/Bungee-Regular.ttf
+    - family: OpenSans
+      fonts:
+        - asset: lib/fonts/OpenSans-ExtraBoldItalic.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
